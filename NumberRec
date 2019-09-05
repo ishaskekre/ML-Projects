@@ -1,27 +1,12 @@
-import pandas as pd
-import os
-import time
-from datetime import datetime
-path = "/Users/ishaskekre/Documents/investing_files/intraQuarter"
-def Key_Stats(gather="Total Debt/Equity (mrq)"):
-    statspath = path+'/_KeyStats'
-    stock_list = [x[0] for x in os.walk(statspath)]
-    for each_dir in stock_list[1:]:
-        files = os.listdir(each_dir)
-        company = each_dir.split("/")[-1]
-        if len(each_file)>0:
-            for file in files:
-                time = datetime.strptime(file, "%Y%m%d%H%M%S.html")
-                Time = time.mktime(date_stamp.timetuple())
-                #print(time, Time)
-                path = each_dir+'/'+file
-                print(full_file_path)
-                source = open(path,'r').read()
-                #print(source)
-                ratio = source.split(gather+':</td><td class="yfnc_tabledata1">')
-                catch()
-                ratio = ratio[1]
-                ratio = ratio.split('</td>')[0]
-                print(company+":",ratio)
-    
-Key_Stats()
+import matplotlib
+import numpy
+import sklearn
+import matplotlib.pyplot as plt
+from sklearn import datasets
+from sklearn import svm
+digits = datasets.load_digits()
+clf = svm.SVC(gamma=0.0001, C = 100)
+x,y = digits.data[:-1], digits.target[:-1]
+clf.fit(x,y)
+print('Prediction:', clf.predict(digits.data[-5].reshape(1,-1)))
+plt.imshow(digits.images[-5], cmap = plt.cm.gray_r, interpolation="nearest")
